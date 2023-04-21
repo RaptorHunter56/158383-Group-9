@@ -8,16 +8,14 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="css/leaflet-search.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
-        <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
         #map {
-            width: 1136px;
-            height: 883px;
+            width: 1066px;
+            height: 571px;
         }
         </style>
-        <title>Churches in New Zealand</title>
+        <title></title>
     </head>
     <body>
         <div id="map">
@@ -32,9 +30,7 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
-        <script src="js/leaflet-measure.js"></script>
-        <script src="js/leaflet-search.js"></script>
-        <script src="data/ne_10m_airports_1.js"></script>
+        <script src="data/GoogleBigData_1.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -53,23 +49,11 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[-80.62829916122948,29.016300088389755],[63.89284845788189,215.0401155254752]]);
+        }).fitBounds([[-44.56969375671886,167.04544048489296],[-33.07505947846643,188.53980054123846]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
-        var measureControl = new L.Control.Measure({
-            position: 'topleft',
-            primaryLengthUnit: 'meters',
-            secondaryLengthUnit: 'kilometers',
-            primaryAreaUnit: 'sqmeters',
-            secondaryAreaUnit: 'hectares'
-        });
-        measureControl.addTo(map);
-        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
-        .innerHTML = '';
-        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
-        .className += ' fas fa-ruler';
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
@@ -86,7 +70,7 @@
         });
         layer_OSMStandard_0;
         map.addLayer(layer_OSMStandard_0);
-        function pop_ne_10m_airports_1(feature, layer) {
+        function pop_GoogleBigData_1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -97,62 +81,72 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">name</th>\
-                        <td>' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['placeUrl'] !== null ? autolinker.link(feature.properties['placeUrl'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">iata_code</th>\
-                        <td>' + (feature.properties['iata_code'] !== null ? autolinker.link(feature.properties['iata_code'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['title'] !== null ? autolinker.link(feature.properties['title'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">wikipedia</th>\
-                        <td>' + (feature.properties['wikipedia'] !== null ? autolinker.link(feature.properties['wikipedia'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['rating'] !== null ? autolinker.link(feature.properties['rating'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">class</th>\
-                        <td>' + (feature.properties['class'] !== null ? autolinker.link(feature.properties['class'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['reviewCount'] !== null ? autolinker.link(feature.properties['reviewCount'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['category'] !== null ? autolinker.link(feature.properties['category'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['address'] !== null ? autolinker.link(feature.properties['address'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['plusCode'] !== null ? autolinker.link(feature.properties['plusCode'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['website'] !== null ? autolinker.link(feature.properties['website'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['phoneNumber'] !== null ? autolinker.link(feature.properties['phoneNumber'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tuesday'] !== null ? autolinker.link(feature.properties['tuesday'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['wednesday'] !== null ? autolinker.link(feature.properties['wednesday'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['thursday'] !== null ? autolinker.link(feature.properties['thursday'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['friday'] !== null ? autolinker.link(feature.properties['friday'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['saturday'] !== null ? autolinker.link(feature.properties['saturday'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['sunday'] !== null ? autolinker.link(feature.properties['sunday'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['monday'] !== null ? autolinker.link(feature.properties['monday'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['imgUrl'] !== null ? autolinker.link(feature.properties['imgUrl'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['latitude'] !== null ? autolinker.link(feature.properties['latitude'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['longitude'] !== null ? autolinker.link(feature.properties['longitude'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['query'] !== null ? autolinker.link(feature.properties['query'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_ne_10m_airports_1_0(feature) {
-            switch(String(feature.properties['class'])) {
-                case 'Major Airp':
-                    return {
-                pane: 'pane_ne_10m_airports_1',
-                radius: 8.0,
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(207,205,70,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Mid Airpor':
-                    return {
-                pane: 'pane_ne_10m_airports_1',
-                radius: 6.0,
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(117,238,236,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Small Airp':
-                    return {
-                pane: 'pane_ne_10m_airports_1',
+        function style_GoogleBigData_1_0() {
+            return {
+                pane: 'pane_GoogleBigData_1',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -162,64 +156,30 @@
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(97,137,212,1.0)',
+                fillColor: 'rgba(232,113,141,1.0)',
                 interactive: true,
-            }
-                    break;
-                case 'Spaceport ':
-                    return {
-                pane: 'pane_ne_10m_airports_1',
-                radius: 4.0,
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(223,99,225,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'NULL':
-                    return {
-                pane: 'pane_ne_10m_airports_1',
-                radius: 4.0,
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(225,100,42,1.0)',
-                interactive: true,
-            }
-                    break;
             }
         }
-        map.createPane('pane_ne_10m_airports_1');
-        map.getPane('pane_ne_10m_airports_1').style.zIndex = 401;
-        map.getPane('pane_ne_10m_airports_1').style['mix-blend-mode'] = 'normal';
-        var layer_ne_10m_airports_1 = new L.geoJson(json_ne_10m_airports_1, {
+        map.createPane('pane_GoogleBigData_1');
+        map.getPane('pane_GoogleBigData_1').style.zIndex = 401;
+        map.getPane('pane_GoogleBigData_1').style['mix-blend-mode'] = 'normal';
+        var layer_GoogleBigData_1 = new L.geoJson(json_GoogleBigData_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_ne_10m_airports_1',
-            layerName: 'layer_ne_10m_airports_1',
-            pane: 'pane_ne_10m_airports_1',
-            onEachFeature: pop_ne_10m_airports_1,
+            dataVar: 'json_GoogleBigData_1',
+            layerName: 'layer_GoogleBigData_1',
+            pane: 'pane_GoogleBigData_1',
+            onEachFeature: pop_GoogleBigData_1,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_ne_10m_airports_1_0(feature));
+                return L.circleMarker(latlng, style_GoogleBigData_1_0(feature));
             },
         });
-        bounds_group.addLayer(layer_ne_10m_airports_1);
-        map.addLayer(layer_ne_10m_airports_1);
+        bounds_group.addLayer(layer_GoogleBigData_1);
+        map.addLayer(layer_GoogleBigData_1);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -230,16 +190,7 @@
         .className += ' fa fa-search';
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
-        var baseMaps = {};
-        L.control.layers(baseMaps,{'ne_10m_airports<br /><table><tr><td style="text-align: center;"><img src="legend/ne_10m_airports_1_MajorAirp0.png" /></td><td>Major Airp</td></tr><tr><td style="text-align: center;"><img src="legend/ne_10m_airports_1_MidAirpor1.png" /></td><td>Mid Airpor</td></tr><tr><td style="text-align: center;"><img src="legend/ne_10m_airports_1_SmallAirp2.png" /></td><td>Small Airp</td></tr><tr><td style="text-align: center;"><img src="legend/ne_10m_airports_1_Spaceport3.png" /></td><td>Spaceport </td></tr><tr><td style="text-align: center;"><img src="legend/ne_10m_airports_1_4.png" /></td><td></td></tr></table>': layer_ne_10m_airports_1,"OSM Standard": layer_OSMStandard_0,}).addTo(map);
         setBounds();
-        map.addControl(new L.Control.Search({
-            layer: layer_ne_10m_airports_1,
-            initial: false,
-            hideMarkerOnCollapse: true,
-            propertyName: 'iata_code'}));
-        document.getElementsByClassName('search-button')[0].className +=
-         ' fa fa-binoculars';
         </script>
     </body>
 </html>

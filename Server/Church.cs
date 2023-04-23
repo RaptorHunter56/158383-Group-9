@@ -14,7 +14,7 @@ public class Church
     private double _latitude;
     private double _longitude;
     private string _query;
-    private Point _location;
+    private POINT _location;
 
     public int id { get => _id; set => _id = value; }
     public string placeUrl { get => _placeUrl; set => _placeUrl = value; }
@@ -34,10 +34,10 @@ public class Church
     /// <summary>
     /// Spacial Point
     /// </summary>
-    public Point location { get => _location; set => _location = value; }
+    public POINT location { get => _location; set => _location = value; }
 
     public Church() { }
-    public Church(int id_, string placeUrl_, string title_, double rating_, int reviewCount_, string category_, string address_, string plusCode_, string website_, string phoneNumber_, string imgUrl_, double latitude_, double longitude_, string query_, Point location_)
+    public Church(int id_, string placeUrl_, string title_, double rating_, int reviewCount_, string category_, string address_, string plusCode_, string website_, string phoneNumber_, string imgUrl_, double latitude_, double longitude_, string query_, POINT location_)
     {
         this.id = id_;
         this.placeUrl = placeUrl_;
@@ -62,12 +62,12 @@ public class Church
         private int _id;
         private string _title;
         private string _category;
-        private Point _location;
+        private POINT _location;
 
         public int id { get => _id; set => _id = value; }
         public string title { get => _title; set => _title = value; }
         public string category { get => _category; set => _category = value; }
-        public Point location { get => _location; set => _location = value; }
+        public POINT location { get => _location; set => _location = value; }
 
         public BasicData(Church church)
         {
@@ -77,5 +77,4 @@ public class Church
             this.location = church.location;
         }
     }
-
 }

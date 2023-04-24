@@ -131,6 +131,9 @@
                     <tr>\
                         <td colspan="2">' + (feature.properties['imgUrl'] !== null ? autolinker.link(feature.properties['imgUrl'].toLocaleString()) : '') + '</td>\
                     </tr>\
+					<tr>\
+						<img src="' + (feature.properties['imgUrl'] !== null ? (feature.properties['imgUrl'].toLocaleString()) : '') + '" alt="Flowers in Chania">\
+					</tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['latitude'] !== null ? autolinker.link(feature.properties['latitude'].toLocaleString()) : '') + '</td>\
                     </tr>\

@@ -14,6 +14,7 @@ public class Church
     private double _latitude;
     private double _longitude;
     private string _query;
+    private List<Dates> _dates;
     private POINT _location;
 
     public int id { get => _id; set => _id = value; }
@@ -30,14 +31,15 @@ public class Church
     public double latitude { get => _latitude; set => _latitude = value; }
     public double longitude { get => _longitude; set => _longitude = value; }
     public string query { get => _query; set => _query = value; }
+    public List<Dates> dates { get => _dates; set => _dates = value; }
     //Update Point Type
     /// <summary>
     /// Spacial Point
     /// </summary>
     public POINT location { get => _location; set => _location = value; }
 
-    public Church() { }
-    public Church(int id_, string placeUrl_, string title_, double rating_, int reviewCount_, string category_, string address_, string plusCode_, string website_, string phoneNumber_, string imgUrl_, double latitude_, double longitude_, string query_, POINT location_)
+    public Church() => this._dates = new List<Dates>();
+    public Church(int id_, string placeUrl_, string title_, double rating_, int reviewCount_, string category_, string address_, string plusCode_, string website_, string phoneNumber_, string imgUrl_, double latitude_, double longitude_, string query_, List<Dates> dates_, POINT location_)
     {
         this.id = id_;
         this.placeUrl = placeUrl_;
@@ -53,6 +55,7 @@ public class Church
         this.latitude = latitude_;
         this.longitude = longitude_;
         this.query = query_;
+        this.dates = dates_;
         this.location = location_;
     }
 
@@ -76,5 +79,24 @@ public class Church
             this.category = church.category;
             this.location = church.location;
         }
+    }
+}
+
+public class Dates
+{
+    private long _churchID;
+    private long _date;
+    private string _time;
+
+    public long churchID { get => _churchID; set => _churchID = value; }
+    public long date { get => _date; set => _date = value; }
+    public string time { get => _time; set => _time = value; }
+
+    public Dates() { }
+    public Dates(int churchID_, string date_, string time_)
+    {
+        this.churchID = churchID_;
+        this.date = date_;
+        this.time = time_;
     }
 }

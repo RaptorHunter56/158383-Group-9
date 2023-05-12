@@ -23,6 +23,11 @@ namespace Website_Http.Controllers
             return View();
         }
 
+        public IActionResult UserDocumtation()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

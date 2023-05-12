@@ -1,18 +1,25 @@
+:root {
+    /* CSS HEX */
+    --text-white: #FEFFFF;
+    --text-light: #F1F2F2;
+    --text-dark: #858585;
+    --background-light: #505050;
+    --background-dark: #292929;
+}
+
 html {
-  font-size: 14px;
+    font-size: 14px;
+    background-color: var(--background-light);
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
-}

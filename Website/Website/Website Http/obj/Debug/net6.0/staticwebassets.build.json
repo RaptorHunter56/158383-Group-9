@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WWVLu7jLMpipJseGwkjMDu0J512NO84gF481pswgU40=",
+  "Hash": "4AOULWJbFodcTeDxmYEnD6YctJcJTZ4L5WUbpzoutcA=",
   "Source": "Website Http",
   "BasePath": "_content/Website Http",
   "Mode": "Default",
@@ -1086,6 +1086,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Steven Bown\\Documents\\GitHub\\158383-Group-9\\Website\\Website\\Website Http\\wwwroot\\Logo.png",
+      "SourceId": "Website Http",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Steven Bown\\Documents\\GitHub\\158383-Group-9\\Website\\Website\\Website Http\\wwwroot\\",
+      "BasePath": "_content/Website Http",
+      "RelativePath": "Logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Logo.png"
     }
   ]
 }

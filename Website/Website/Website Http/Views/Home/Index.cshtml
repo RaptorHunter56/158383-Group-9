@@ -11,20 +11,20 @@
 
     </div>
     @*Card*@
-    <div>
+    <div style="zoom: 60%;">
         <div class="card" style="width: 18rem;">
             <img src="https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=yQj9sMobQMuxG6LD2-HbtQ&cb_client=search.gws-prod.gps&w=408&h=240&yaw=113.478546&pitch=0&thumbfov=100"
-                 class="card-img-top card-img ratio ratio-1x1" alt="Church Image" width="300" height="200" id="myImg" style="object-fit: cover; cursor: zoom-in;">
-            <div class="card-body text-black card-img-overlay" style="cursor: zoom-in; background: linear-gradient(to top, rgba(255,255,255,1) 42%,rgba(0,0,0,0) 100%); text-shadow: -1px 1px 0 #fff, 1px 1px 0 #fff, 1px -1px 0 #fff;">
-                <h5 class="card-title opacity-0" id="myImg2" style="cursor: zoom-in;">.</h5>
-                <p class="card-text opacity-0" id="myImg3" style="cursor: zoom-in;">.</p>
-                <h5 class="card-title" id="myButton1" style="cursor: pointer;">
-                    <a class="text-dark" asp-area="" asp-controller="Home" asp-action="Single" style="text-decoration:none;">
+                 class="card-img-top card-img ratio ratio-1x1" alt="Church Image" width="300" height="200" style="object-fit: cover;">
+            <div class="card-body text-black card-img-overlay" id="single" @*data-bs-toggle="modal" data-bs-target="#bigModal"*@ style="cursor: pointer; background: linear-gradient(to top, rgba(255,255,255,1) 42%,rgba(0,0,0,0) 100%); text-shadow: -1px 1px 0 #fff, 1px 1px 0 #fff, 1px -1px 0 #fff;">
+                <h5 class="card-title opacity-0">.</h5>
+                <p class="card-text opacity-0" id="singleID">26667</p>
+                <h5 class="card-title">
+                    <a class="text-dark" style="text-decoration:none;">
                         Congregational Church of Samoa New Zealand Inc.
                     </a>
                 </h5>
-                <p class="card-text" id="myButton2" style="cursor: pointer;">
-                    <a class="text-dark" asp-area="" asp-controller="Home" asp-action="Single" style="text-decoration:none;">
+                <p class="card-text">
+                    <a class="text-dark" style="text-decoration:none;">
                         7 Lincoln Road, Henderson, Auckland 0610
                     </a>
                 </p>
@@ -38,40 +38,34 @@
     </div>
 </div>
 
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="img01">
-    <div id="caption"></div>
+<!-- Modal -->
+<div class="modal fade" id="bigModal" tabindex="-1" aria-labelledby="bigModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg modal-fullscreen-sm-down modal-dialog-centered text-black" id="singleResults">
+        @*<div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bigModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>*@
+    </div>
 </div>
 
 <script>
-    // Get the modal
-    var modal = document.getElementById('myModal');
-
-    // Get the image and insert it inside the modal - use its "alt" text as a caption
-    var img = document.getElementById('myImg');
-    var img2 = document.getElementById('myImg2');
-    var img3 = document.getElementById('myImg3');
-    var modalImg = document.getElementById("img01");
-    var captionText = document.getElementById("caption");
-    img.onclick = function () {
-        modal.style.display = "block";
-        modalImg.src = this.src;
-        captionText.innerHTML = this.alt;
-    }
-    img2.onclick = img3.onclick = function () {
-        modal.style.display = "block";
-        modalImg.src = document.getElementById('myImg').src;
-        captionText.innerHTML = document.getElementById('myImg').alt;
-    }
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
+    document.getElementById('single').onclick = function () {
+        var myModal = new bootstrap.Modal(document.getElementById('bigModal'), {
+            keyboard: false
+        });
+        myModal.show();
+        var singleID = document.getElementById('singleID').textContent;
+        console.log(singleID);
+        fetch('@Url.Action("Single", "Home")/' + singleID)
+        .then(response => { return response.text(); })
+        .then(response => { document.getElementById('singleResults').innerHTML = response; });
     }
 </script>

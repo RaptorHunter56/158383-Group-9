@@ -1,6 +1,27 @@
-﻿@{
+﻿@model string
+@{
     ViewData["Title"] = "Single";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Single</p>
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="bigModalLabel">@(Model)</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <img src="https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=yQj9sMobQMuxG6LD2-HbtQ&cb_client=search.gws-prod.gps&w=408&h=240&yaw=113.478546&pitch=0&thumbfov=100"
+             class="border border-secondary rounded-top rounded-3" alt="Church Image" style="object-fit: cover; width: -webkit-fill-available; max-height:200px;">
+        <h5>Congregational Church of Samoa New Zealand Inc.</h5>
+        <p>7 Lincoln Road, Henderson, Auckland 0610</p>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item py-1"><span style="display: inline-block; width: 75px;"><b>Monday:</b></span> Close</li>
+            <li class="list-group-item py-1"><span style="display: inline-block; width: 75px;"><b>Tuesday:</b></span> Close</li>
+            <li class="list-group-item py-1"><span style="display: inline-block; width: 75px;"><b>Wensday:</b></span> Close</li>
+            <li class="list-group-item py-1"><span style="display: inline-block; width: 75px;"><b>Thursday:</b></span> Close</li>
+            <li class="list-group-item py-1"><span style="display: inline-block; width: 75px;"><b>Friday:</b></span> Close</li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
+</div>

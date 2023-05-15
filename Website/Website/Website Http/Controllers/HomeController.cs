@@ -28,9 +28,10 @@ namespace Website_Http.Controllers
             return View();
         }
 
-        public IActionResult Single()
+        public IActionResult Single(string id)
         {
-            return View();
+            var model = id;
+            return PartialView("Single", model);
         }
         
 

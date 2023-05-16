@@ -1,24 +1,27 @@
-﻿@model string
+﻿@model Church
 @{
     ViewData["Title"] = "Single";
 }
 
 <div class="modal-content">
     <div class="modal-header">
-        <h5 class="modal-title" id="bigModalLabel">@(Model)</h5>
+        <h5 class="modal-title" id="bigModalLabel">@Model.title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-        <img src="https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=yQj9sMobQMuxG6LD2-HbtQ&cb_client=search.gws-prod.gps&w=408&h=240&yaw=113.478546&pitch=0&thumbfov=100"
+        <img src="@Model.imgUrl"
              class="border border-secondary rounded-top rounded-3" alt="Church Image" style="object-fit: cover; width: -webkit-fill-available; max-height:200px;">
-        <h5>Congregational Church of Samoa New Zealand Inc.</h5>
-        <p>7 Lincoln Road, Henderson, Auckland 0610</p>
+        <h5>@Model.title</h5>
+        <p>@Model.address</p>
+        <p>@Model.category</p>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item py-1"><span style="display: inline-block; width: 75px;"><b>Monday:</b></span> Close</li>
-            <li class="list-group-item py-1"><span style="display: inline-block; width: 75px;"><b>Tuesday:</b></span> Close</li>
-            <li class="list-group-item py-1"><span style="display: inline-block; width: 75px;"><b>Wensday:</b></span> Close</li>
-            <li class="list-group-item py-1"><span style="display: inline-block; width: 75px;"><b>Thursday:</b></span> Close</li>
-            <li class="list-group-item py-1"><span style="display: inline-block; width: 75px;"><b>Friday:</b></span> Close</li>
+            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Monday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 1)?.time ?? "Close")</li>
+            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Tuesday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 2)?.time ?? "Close")</li>
+            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Wensday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 3)?.time ?? "Close")</li>
+            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Thursday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 4)?.time ?? "Close")</li>
+            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Friday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 5)?.time ?? "Close")</li>
+            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Saterday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 6)?.time ?? "Close")</li>
+            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Sunday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 7)?.time ?? "Close")</li>
         </ul>
     </div>
     <div class="modal-footer">

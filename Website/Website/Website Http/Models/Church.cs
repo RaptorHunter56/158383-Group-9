@@ -1,7 +1,12 @@
+using System.Data.SQLite;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
+using System.Data.SqlClient;
+using static System.Data.Entity.Infrastructure.Design.Executor;
 
 namespace Website_Http.Models
 {
+    [Table("Church")]
     public class Church
     {
         private int _id;
@@ -84,6 +89,48 @@ namespace Website_Http.Models
                 _location = church.location;
             }
         }
+
+        //"SELECT * FROM Church LIMIT 5"
+        public static Church GetChurch(int id) => GetChurches("SELECT * FROM Church WHERE id = " + id.ToString())[0];
+        public static List<Church> GetChurches(string command)
+        {
+            string cs = @$"data source={Path.Combine(Environment.CurrentDirectory, "Database\\SpatiaServer.sqlite")}";
+            var templist = new List<Church>();
+
+            using (SQLiteConnection conn = new SQLiteConnection(cs))
+            {
+                using (SQLiteCommand cmd = new SQLiteCommand(command, conn))
+                {
+                    conn.Open();
+                    using (SQLiteDataReader rdr = cmd.ExecuteReader())
+                    {
+                        while (rdr.Read())
+                        {
+                            var Church = new Church()
+                            {
+                                _id = rdr.GetInt32(0),
+                                _placeUrl = rdr.GetString(1),
+                                _title = rdr.GetString(2),
+                                _rating = rdr.GetDouble(3),
+                                _reviewCount = rdr.GetInt32(4),
+                                _category = rdr.GetString(5),
+                                _address = rdr.GetString(6),
+                                _plusCode = rdr.GetString(7),
+                                _website = rdr.GetString(8),
+                                _phoneNumber = rdr.GetString(9),
+                                _imgUrl = rdr.GetString(10),
+                                _latitude = rdr.GetDouble(11),
+                                _longitude = rdr.GetDouble(12),
+                                _query = rdr.GetString(13)
+                            };
+                            templist.Add(Church);
+                        }
+                    }
+                    conn.Close();
+                }
+            }
+            return templist;
+        }
     }
 
     public class Dates
@@ -102,6 +149,35 @@ namespace Website_Http.Models
             this.churchID = churchID_;
             this.date = date_;
             this.time = time_;
+        }
+
+        public static List<Dates> GetDates(string churchID)
+        {
+            string cs = @$"data source={Path.Combine(Environment.CurrentDirectory, "Database\\SpatiaServer.sqlite")}";
+            var templist = new List<Dates>();
+
+            using (SQLiteConnection conn = new SQLiteConnection(cs))
+            {
+                using (SQLiteCommand cmd = new SQLiteCommand("SELECT * FROM OpenTime WHERE churchID = " + churchID, conn))
+                {
+                    conn.Open();
+                    using (SQLiteDataReader rdr = cmd.ExecuteReader())
+                    {
+                        while (rdr.Read())
+                        {
+                            var Date = new Dates()
+                            {
+                                _churchID = (long)rdr.GetDouble(0),
+                                _date = (long)rdr.GetDouble(1),
+                                _time = rdr.GetString(2)
+                            };
+                            templist.Add(Date);
+                        }
+                    }
+                    conn.Close();
+                }
+            }
+            return templist;
         }
     }
 }

@@ -30,7 +30,8 @@ namespace Website_Http.Controllers
 
         public IActionResult Single(string id)
         {
-            var model = id;
+            var model = Church.GetChurch(Int32.Parse(id));
+            model.dates = Dates.GetDates(model.id.ToString());
             return PartialView("Single", model);
         }
         

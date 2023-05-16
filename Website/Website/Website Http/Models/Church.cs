@@ -151,6 +151,7 @@ namespace Website_Http.Models
             this.time = time_;
         }
 
+        public static List<Dates> GetDates(int churchID) => GetDates(churchID.ToString());
         public static List<Dates> GetDates(string churchID)
         {
             string cs = @$"data source={Path.Combine(Environment.CurrentDirectory, "Database\\SpatiaServer.sqlite")}";

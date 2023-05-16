@@ -14,6 +14,78 @@
         <h5>@Model.title</h5>
         <p>@Model.address</p>
         <p>@Model.category</p>
+        <p>
+            @Model.rating
+            @*1*@
+            @if (Model.rating < 0.5)
+            {
+                <i class="bi bi-star"></i>
+            }
+            else if (Model.rating < 1)
+            {
+                <i class="bi bi-star-half"></i>
+            }
+            else
+            {
+                <i class="bi bi-star-fill"></i>
+            }
+
+            @*2*@
+            @if (Model.rating < 1.5)
+            {
+                <i class="bi bi-star"></i>
+            }
+            else if (Model.rating < 2)
+            {
+                <i class="bi bi-star-half"></i>
+            }
+            else
+            {
+                <i class="bi bi-star-fill"></i>
+            }
+
+            @*3*@
+            @if (Model.rating < 2.5)
+            {
+                <i class="bi bi-star"></i>
+            }
+            else if (Model.rating < 3)
+            {
+                <i class="bi bi-star-half"></i>
+            }
+            else
+            {
+                <i class="bi bi-star-fill"></i>
+            }
+
+            @*4*@
+            @if (Model.rating < 3.5)
+            {
+                <i class="bi bi-star"></i>
+            }
+            else if (Model.rating < 4)
+            {
+                <i class="bi bi-star-half"></i>
+            }
+            else
+            {
+                <i class="bi bi-star-fill"></i>
+            }
+
+            @*5*@
+            @if (Model.rating < 4.5)
+            {
+                <i class="bi bi-star"></i>
+            }
+            else if (Model.rating < 5)
+            {
+                <i class="bi bi-star-half"></i>
+            }
+            else
+            {
+                <i class="bi bi-star-fill"></i>
+            }
+        </p>
         <ul class="list-group list-group-flush">
             <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Monday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 1)?.time ?? "Close")</li>
             <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Tuesday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 2)?.time ?? "Close")</li>

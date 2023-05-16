@@ -11,11 +11,10 @@
     <div class="modal-body">
         <img src="@Model.imgUrl"
              class="border border-secondary rounded-top rounded-3" alt="Church Image" style="object-fit: cover; width: -webkit-fill-available; max-height:200px;">
-        <h5>@Model.title</h5>
-        <p>@Model.address</p>
+        <h5>@Model.address</h5>
         <p>@Model.category</p>
         <p>
-            @Model.rating / 5 .
+            @Model.rating / 5 
             @*1*@
             @if (Model.rating < 0.5)
             {

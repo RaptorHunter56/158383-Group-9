@@ -1,20 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sbnbl\\Documents\\GitHub\\158383-Group-9\\Website\\Website\\Website Http\\Website Http.csproj": {}
+    "C:\\Users\\Steven Bown\\Documents\\GitHub\\158383-Group-9\\Website\\Website\\Website Http\\Website Http.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sbnbl\\Documents\\GitHub\\158383-Group-9\\Website\\Website\\Website Http\\Website Http.csproj": {
+    "C:\\Users\\Steven Bown\\Documents\\GitHub\\158383-Group-9\\Website\\Website\\Website Http\\Website Http.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sbnbl\\Documents\\GitHub\\158383-Group-9\\Website\\Website\\Website Http\\Website Http.csproj",
+        "projectUniqueName": "C:\\Users\\Steven Bown\\Documents\\GitHub\\158383-Group-9\\Website\\Website\\Website Http\\Website Http.csproj",
         "projectName": "Website Http",
-        "projectPath": "C:\\Users\\sbnbl\\Documents\\GitHub\\158383-Group-9\\Website\\Website\\Website Http\\Website Http.csproj",
-        "packagesPath": "C:\\Users\\sbnbl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sbnbl\\Documents\\GitHub\\158383-Group-9\\Website\\Website\\Website Http\\obj\\",
+        "projectPath": "C:\\Users\\Steven Bown\\Documents\\GitHub\\158383-Group-9\\Website\\Website\\Website Http\\Website Http.csproj",
+        "packagesPath": "C:\\Users\\Steven Bown\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Steven Bown\\Documents\\GitHub\\158383-Group-9\\Website\\Website\\Website Http\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\sbnbl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Steven Bown\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -68,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -3,6 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 using System.Data.SqlClient;
 using static System.Data.Entity.Infrastructure.Design.Executor;
+using System.Data;
+using System.Data.Common;
 
 namespace Website_Http.Models
 {
@@ -12,8 +14,8 @@ namespace Website_Http.Models
         private int _id;
         private string _placeUrl;
         private string _title;
-        private double _rating;
-        private int _reviewCount;
+        private double? _rating = null;
+        private int? _reviewCount = null;
         private string _category;
         private string _address;
         private string _plusCode;
@@ -29,8 +31,8 @@ namespace Website_Http.Models
         public int id { get => _id; set => _id = value; }
         public string placeUrl { get => _placeUrl; set => _placeUrl = value; }
         public string title { get => _title; set => _title = value; }
-        public double rating { get => _rating; set => _rating = value; }
-        public int reviewCount { get => _reviewCount; set => _reviewCount = value; }
+        public double? rating { get => _rating; set => _rating = value; }
+        public int? reviewCount { get => _reviewCount; set => _reviewCount = value; }
         public string category { get => _category; set => _category = value; }
         public string address { get => _address; set => _address = value; }
         public string plusCode { get => _plusCode; set => _plusCode = value; }
@@ -111,8 +113,8 @@ namespace Website_Http.Models
                                 _id = rdr.GetInt32(0),
                                 _placeUrl = rdr.GetString(1),
                                 _title = rdr.GetString(2),
-                                _rating = rdr.GetDouble(3),
-                                _reviewCount = rdr.GetInt32(4),
+                                _rating = (double?)(rdr.IsDBNull(3) || (rdr.GetFieldValue<decimal>(3) == 0) ? new decimal?() : rdr.GetFieldValue<decimal>(3)),
+                                _reviewCount = (int?)(rdr.IsDBNull(3) || (rdr.GetFieldValue<decimal>(4) == 0) ? new int?() : Decimal.ToInt32(rdr.GetFieldValue<decimal>(4))),
                                 _category = rdr.GetString(5),
                                 _address = rdr.GetString(6),
                                 _plusCode = rdr.GetString(7),

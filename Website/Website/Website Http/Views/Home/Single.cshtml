@@ -11,88 +11,102 @@
     <div class="modal-body">
         <img src="@Model.imgUrl"
              class="border border-secondary rounded-top rounded-3" alt="Church Image" style="object-fit: cover; width: -webkit-fill-available; max-height:200px;">
-        <h5>@Model.address</h5>
-        <p>@Model.category</p>
-        <p>
-            @Model.rating / 5 
-            @*1*@
-            @if (Model.rating < 0.5)
-            {
-                <i class="bi bi-star"></i>
-            }
-            else if (Model.rating < 1)
-            {
-                <i class="bi bi-star-half"></i>
-            }
-            else
-            {
-                <i class="bi bi-star-fill"></i>
-            }
+        <h5><b>Address:</b> @Model.address</h5>
+        @if (Model.category.Length != 0)
+        {
+            <p><b>Category:</b> @Model.category</p>
+        }
+        @if (Model.phoneNumber.Length != 0)
+        {
+            <p><b>Phone Number:</b> @Model.phoneNumber</p>
+        }
+        @if (Model.website.Length != 0)
+        {
+            <p><b>Website:</b> @Model.website</p>
+        }
+        @if (Model.rating != null)
+        {
+            <p>
+                @Model.rating.Value / 5
+                @*1*@
+                @if (Math.Round(Model.rating.Value * 2) < 1)
+                {
+                    <i class="bi bi-star"></i>
+                }
+                else if (Math.Round(Model.rating.Value * 2) < 2)
+                {
+                    <i class="bi bi-star-half"></i>
+                }
+                else
+                {
+                    <i class="bi bi-star-fill"></i>
+                }
 
-            @*2*@
-            @if (Model.rating < 1.5)
-            {
-                <i class="bi bi-star"></i>
-            }
-            else if (Model.rating < 2)
-            {
-                <i class="bi bi-star-half"></i>
-            }
-            else
-            {
-                <i class="bi bi-star-fill"></i>
-            }
+                @*2*@
+                @if (Math.Round(Model.rating.Value * 2) < 3)
+                {
+                    <i class="bi bi-star"></i>
+                }
+                else if (Math.Round(Model.rating.Value * 2) < 4)
+                {
+                    <i class="bi bi-star-half"></i>
+                }
+                else
+                {
+                    <i class="bi bi-star-fill"></i>
+                }
 
-            @*3*@
-            @if (Model.rating < 2.5)
-            {
-                <i class="bi bi-star"></i>
-            }
-            else if (Model.rating < 3)
-            {
-                <i class="bi bi-star-half"></i>
-            }
-            else
-            {
-                <i class="bi bi-star-fill"></i>
-            }
+                @*3*@
+                @if (Math.Round(Model.rating.Value * 2) < 5)
+                {
+                    <i class="bi bi-star"></i>
+                }
+                else if (Math.Round(Model.rating.Value * 2) < 6)
+                {
+                    <i class="bi bi-star-half"></i>
+                }
+                else
+                {
+                    <i class="bi bi-star-fill"></i>
+                }
 
-            @*4*@
-            @if (Model.rating < 3.5)
-            {
-                <i class="bi bi-star"></i>
-            }
-            else if (Model.rating < 4)
-            {
-                <i class="bi bi-star-half"></i>
-            }
-            else
-            {
-                <i class="bi bi-star-fill"></i>
-            }
+                @*4*@
+                @if (Math.Round(Model.rating.Value * 2) < 7)
+                {
+                    <i class="bi bi-star"></i>
+                }
+                else if (Math.Round(Model.rating.Value * 2) < 8)
+                {
+                    <i class="bi bi-star-half"></i>
+                }
+                else
+                {
+                    <i class="bi bi-star-fill"></i>
+                }
 
-            @*5*@
-            @if (Model.rating < 4.5)
-            {
-                <i class="bi bi-star"></i>
-            }
-            else if (Model.rating < 5)
-            {
-                <i class="bi bi-star-half"></i>
-            }
-            else
-            {
-                <i class="bi bi-star-fill"></i>
-            }
-        </p>
+                @*5*@
+                @if (Math.Round(Model.rating.Value * 2) < 9)
+                {
+                    <i class="bi bi-star"></i>
+                }
+                else if (Math.Round(Model.rating.Value * 2) < 10)
+                {
+                    <i class="bi bi-star-half"></i>
+                }
+                else
+                {
+                    <i class="bi bi-star-fill"></i>
+                }
+            </p>
+        }
         <ul class="list-group list-group-flush">
-            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Monday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 1)?.time ?? "Close")</li>
-            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Tuesday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 2)?.time ?? "Close")</li>
-            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Wensday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 3)?.time ?? "Close")</li>
-            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Thursday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 4)?.time ?? "Close")</li>
-            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Friday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 5)?.time ?? "Close")</li>
-            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Saterday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 6)?.time ?? "Close")</li>
-            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Sunday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 7)?.time ?? "Close")</li>
+            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Monday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 1)?.time ?? ((Model.dates.Count() == 0) ? "?" : "Close"))</li>
+            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Tuesday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 2)?.time ?? ((Model.dates.Count() == 0) ? "?" : "Close"))</li>
+            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Wensday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 3)?.time ?? ((Model.dates.Count() == 0) ? "?" : "Close"))</li>
+            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Thursday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 4)?.time ?? ((Model.dates.Count() == 0) ? "?" : "Close"))</li>
+            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Friday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 5)?.time ?? ((Model.dates.Count() == 0) ? "?" : "Close"))</li>
+            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Saterday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 6)?.time ?? ((Model.dates.Count() == 0) ? "?" : "Close"))</li>
+            <li class="list-group-item py-1" style="font-size: smaller;"><span style="display: inline-block; width: 75px;"><b>Sunday:</b></span> @(Model.dates.FirstOrDefault(x => x.date == 7)?.time ?? ((Model.dates.Count() == 0) ? "?" : "Close"))</li>
         </ul>
     </div>
     <div class="modal-footer">

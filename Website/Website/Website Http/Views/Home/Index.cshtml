@@ -2,18 +2,19 @@
     ViewData["Title"] = "Mab Page";
 }
 
-
 <div class="text-center">
     <h1 class="display-4">Locations</h1>
 
     @*Map goes Here ⬇⬇*@
-    <div id="map" style="width: 1150px; height: 1150px;"></div>
+    <div>
+        <div id="map" style="height: calc(100vh - 247px);"></div>
+    </div>
     @*Card*@
-    <div style="zoom: 60%;">
+    @*<div style="zoom: 60%;">
         <div class="card" style="width: 18rem;">
             <img src="https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=yQj9sMobQMuxG6LD2-HbtQ&cb_client=search.gws-prod.gps&w=408&h=240&yaw=113.478546&pitch=0&thumbfov=100"
                  class="card-img-top card-img ratio ratio-1x1" alt="Church Image" width="300" height="200" style="object-fit: cover;">
-            <div class="card-body text-black card-img-overlay" id="single" @*data-bs-toggle="modal" data-bs-target="#bigModal"*@ style="cursor: pointer; background: linear-gradient(to top, rgba(255,255,255,1) 42%,rgba(0,0,0,0) 100%); text-shadow: -1px 1px 0 #fff, 1px 1px 0 #fff, 1px -1px 0 #fff;">
+            <div class="card-body text-black card-img-overlay" id="single" style="cursor: pointer; background: linear-gradient(to top, rgba(255,255,255,1) 42%,rgba(0,0,0,0) 100%); text-shadow: -1px 1px 0 #fff, 1px 1px 0 #fff, 1px -1px 0 #fff;">
                 <h5 class="card-title opacity-0">.</h5>
                 <p class="card-text opacity-0" id="singleID">77</p>
                 <h5 class="card-title">
@@ -33,25 +34,12 @@
                 <li class="list-group-item"><i class="bi bi-window-fullscreen"></i> | http://localhost:5264/</li>
             </ul>
         </div>
-    </div>
+    </div>*@
 </div>
 
 <!-- Modal -->
 <div class="modal fade" id="bigModal" tabindex="-1" aria-labelledby="bigModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-lg modal-fullscreen-sm-down modal-dialog-centered text-black" id="singleResults">
-        @*<div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="bigModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>*@
-    </div>
+    <div class="modal-dialog modal-dialog-scrollable modal-lg modal-fullscreen-sm-down modal-dialog-centered text-black" id="singleResults"></div>
 </div>
 
 <script>

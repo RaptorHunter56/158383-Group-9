@@ -42,8 +42,11 @@
     <div class="modal-dialog modal-dialog-scrollable modal-lg modal-fullscreen-sm-down modal-dialog-centered text-black" id="singleResults"></div>
 </div>
 
+@Html.Partial("Map")
+
+@*document.getElementById('single').onclick = *@
 <script>
-    document.getElementById('single').onclick = function () {
+    function openFullPage() {
         var myModal = new bootstrap.Modal(document.getElementById('bigModal'), {
             keyboard: false
         });
@@ -55,5 +58,3 @@
         .then(response => { document.getElementById('singleResults').innerHTML = response; });
     }
 </script>
-
-@Html.Partial("Map")

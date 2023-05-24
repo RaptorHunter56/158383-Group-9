@@ -182,7 +182,7 @@
 			         'class="card-img-top card-img ratio ratio-1x1" alt="Church Image" width="300" height="200" style="object-fit: cover;">' +
 		        '<div class="card-body text-black card-img-overlay" onClick="openFullPage(); return false;" id="single" style="cursor: pointer; background: linear-gradient(to top, rgba(255,255,255,1) 42%,rgba(0,0,0,0) 100%); text-shadow: -1px 1px 0 #fff, 1px 1px 0 #fff, 1px -1px 0 #fff;">' +
 			        '<h5 class="card-title opacity-0">.</h5>' +
-			        '<p class="card-text opacity-0" id="singleID">' + '7' + '</p>' +
+			        '<p class="card-text opacity-0" id="singleID">' + (feature.properties['id'] !== null ? (feature.properties['id'].toLocaleString()) : '') + '</p>' +
 			        '<h5 class="card-title">' +
 				        '<a class="text-dark" style="text-decoration:none;">' +
 					        (feature.properties['title'] !== null ? (feature.properties['title'].toLocaleString()) : '') +
